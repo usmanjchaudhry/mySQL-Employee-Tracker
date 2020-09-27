@@ -31,7 +31,7 @@ function menuPrompt(){
         .then(answer => {
             switch(answer.promptChoice){
                 case "View All Employees":
-                queryEmployeeList();
+                EmployeeList();
                 break;
 
                 case "View Roles":
@@ -67,7 +67,7 @@ function menuPrompt(){
         });
 }
 //-----------------------------------------------------------------------------------------------------------------------------
-function queryEmployeeList () {
+function EmployeeList () {
     var sqlStr = "SELECT first_name, last_name, title, salary FROM employee ";
     sqlStr += "LEFT JOIN role ";
     sqlStr += "ON employee.role_id = role.id"
@@ -170,7 +170,7 @@ function addEmployee(){
                                 if (err) throw err;
                                 console.log("Employee Added");
                            
-                                setTimeout(queryEmployeeList, 500);
+                                setTimeout(EmployeeList, 500);
                             });                            
                         });
                     });
@@ -336,7 +336,7 @@ function updateEmployeeRole(){
                         if (err) throw err;
                         console.log("Employee Role Updated");
                        
-                        setTimeout(queryEmployeeList, 500);
+                        setTimeout(EmployeeList, 500);
                     });
                 });
             });            
